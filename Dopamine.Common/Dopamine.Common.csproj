@@ -53,7 +53,8 @@
     <AssemblyOriginatorKeyFile>..\Dopamine\Dopamine.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSCore">
+    <Reference Include="CSCore, Version=1.2.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dopamine\Libraries\CSCore.dll</HintPath>
     </Reference>
     <Reference Include="Digimezzo.Utilities">

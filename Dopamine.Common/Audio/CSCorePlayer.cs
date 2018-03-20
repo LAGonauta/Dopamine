@@ -331,22 +331,23 @@ namespace Dopamine.Common.Audio
         private void InitializeSoundOut(IWaveSource soundSource)
         {
             // Create SoundOut
-            this.soundOut = new WasapiOut(this.eventSync, this.audioClientShareMode, this.latency, ThreadPriority.Highest);
+            //this.soundOut = new WasapiOut(this.eventSync, this.audioClientShareMode, this.latency, ThreadPriority.Highest);
+            this.soundOut = new ALSoundOut(this.latency, ThreadPriority.Highest);
 
-            if (this.outputDevice == null)
-            {
-                // If no output device was provided, we're playing on the default device.
-                // In such case, we want to detected when the default device changes.
-                // This is done by setting stream routing options
-                ((WasapiOut)this.soundOut).StreamRoutingOptions = StreamRoutingOptions.All;
-            }
-            else
-            {
-                // If an output device was provided, assign it to soundOut.Device.
-                // Only allow stream routing when the device was disconnected.
-                ((WasapiOut)this.soundOut).StreamRoutingOptions = StreamRoutingOptions.OnDeviceDisconnect;
-                ((WasapiOut)this.soundOut).Device = this.outputDevice;
-            }
+            //if (this.outputDevice == null)
+            //{
+            //    // If no output device was provided, we're playing on the default device.
+            //    // In such case, we want to detected when the default device changes.
+            //    // This is done by setting stream routing options
+            //    ((WasapiOut)this.soundOut).StreamRoutingOptions = StreamRoutingOptions.All;
+            //}
+            //else
+            //{
+            //    // If an output device was provided, assign it to soundOut.Device.
+            //    // Only allow stream routing when the device was disconnected.
+            //    ((WasapiOut)this.soundOut).StreamRoutingOptions = StreamRoutingOptions.OnDeviceDisconnect;
+            //    ((WasapiOut)this.soundOut).Device = this.outputDevice;
+            //}
 
             // Initialize SoundOut 
             this.notificationSource = new SingleBlockNotificationStream(soundSource.ToSampleSource());
